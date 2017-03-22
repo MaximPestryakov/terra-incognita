@@ -30,8 +30,7 @@ fun main(args: Array<String>) {
     val result = controller.makeMoves(1000)
     if (result.exitReached) {
         println("You won!")
-    }
-    else {
+    } else {
         println("You lose!")
     }
 }

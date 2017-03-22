@@ -27,15 +27,13 @@ class DummySearcher : AbstractPlayer() {
         lastMove = if (toUnknownDirection != null) {
             decisions += toUnknownDirection
             WalkMove(toUnknownDirection)
-        }
-        else {
+        } else {
             val lastDecision = decisions.lastOrNull()
             if (lastDecision != null) {
                 decisions.removeAt(decisions.size - 1)
                 val backDirection = lastDecision.turnBack()
                 WalkMove(backDirection)
-            }
-            else {
+            } else {
                 WaitMove
             }
         }
@@ -47,7 +45,7 @@ class DummySearcher : AbstractPlayer() {
         val room = result.room
         roomMap[newLocation] = room
         if (result.successful) {
-            when(room) {
+            when (room) {
                 is Wormhole -> {
                     decisions.clear()
                     wormholes++
@@ -63,8 +61,7 @@ class DummySearcher : AbstractPlayer() {
                 }
                 else -> currentLocation = newLocation
             }
-        }
-        else {
+        } else {
             decisions.removeAt(decisions.size - 1)
         }
     }

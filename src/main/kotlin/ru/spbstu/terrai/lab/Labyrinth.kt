@@ -9,7 +9,7 @@ class Labyrinth private constructor(val width: Int, val height: Int, private val
 
     operator fun get(location: Location): Room =
             map[location]
-            ?: if (location.isCorrect) error("Incorrect location: $location") else Wall
+                    ?: if (location.isCorrect) error("Incorrect location: $location") else Wall
 
     operator fun get(x: Int, y: Int) = get(Location(x, y))
 
@@ -22,7 +22,8 @@ class Labyrinth private constructor(val width: Int, val height: Int, private val
             if (room is Wormhole) {
                 val nextRoom = room.next
                 this[location] = map.entries.find {
-                    (_, anotherRoom) -> anotherRoom == nextRoom
+                    (_, anotherRoom) ->
+                    anotherRoom == nextRoom
                 }!!.key
             }
         }
@@ -45,10 +46,10 @@ class Labyrinth private constructor(val width: Int, val height: Int, private val
 
     fun isValid() =
             width in 2..40 && height in 2..25 &&
-            entrances.isNotEmpty() && exits.isNotEmpty() &&
-            map.values.any { it.content == Treasure } &&
-            map.values.filter { it is Wormhole}.let { it.size == it.distinct().size } &&
-            checkWormholes()
+                    entrances.isNotEmpty() && exits.isNotEmpty() &&
+                    map.values.any { it.content == Treasure } &&
+                    map.values.filter { it is Wormhole }.let { it.size == it.distinct().size } &&
+                    checkWormholes()
 
     companion object {
         fun createFromFile(fileName: String) = createFromFile(File(fileName))
@@ -79,8 +80,8 @@ class Labyrinth private constructor(val width: Int, val height: Int, private val
             }
             for ((wormholeId, wormhole) in wormholes) {
                 wormhole.next = wormholes[wormholeId + 1]
-                                ?: wormholes[0]
-                                ?: error("No next wormhole found for $wormholeId")
+                        ?: wormholes[0]
+                        ?: error("No next wormhole found for $wormholeId")
             }
             return Labyrinth(width, height, map)
         }

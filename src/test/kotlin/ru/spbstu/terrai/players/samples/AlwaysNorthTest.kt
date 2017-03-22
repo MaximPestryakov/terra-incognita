@@ -1,7 +1,6 @@
 package ru.spbstu.terrai.players.samples
 
 import org.junit.Test
-import ru.spbstu.terrai.lab.Controller
 
 class AlwaysNorthTest : AbstractPlayerTest() {
 

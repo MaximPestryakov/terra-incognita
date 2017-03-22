@@ -24,6 +24,6 @@ data class Wormhole(private val id: Int) : Room() {
             nextStored = value
         }
 
-    constructor(id: Char): this(id - '0')
+    constructor(id: Char) : this(id - '0')
 }
 

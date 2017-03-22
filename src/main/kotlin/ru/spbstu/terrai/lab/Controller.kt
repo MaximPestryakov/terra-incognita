@@ -65,8 +65,7 @@ class Controller(private val lab: Labyrinth, private val player: Player) {
                         if (playerCondition.hasTreasure) {
                             playerCondition = playerCondition.copy(exitReached = true)
                             true to "Exit reached, you won"
-                        }
-                        else {
+                        } else {
                             true to "Exit reached but you do not have a treasure"
                         }
                     }

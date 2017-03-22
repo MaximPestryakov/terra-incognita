@@ -1,9 +1,6 @@
 package ru.spbstu.terrai.players.samples
 
 import org.junit.Assert.assertEquals
-import ru.spbstu.terrai.core.Player
-import ru.spbstu.terrai.lab.Controller
-import ru.spbstu.terrai.lab.Labyrinth
 
 abstract class AbstractPlayerTest {
 
